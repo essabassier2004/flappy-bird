@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 📱 Makes page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For Azrah 🤍</title>
+
+  <style>
+    /* 🔹 MAIN PAGE */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+
+      /* 🖼️ BACKGROUND IMAGE */
+      background-image: url("us.jpg");
+      background-size: contain;      /* BEST for phones */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #ffd6e8;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 🔹 WHITE CARD */
+    .card {
+      background: rgba(255, 255, 255, 0.5); /* change to 0.7–0.9 if text is hard to read */
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #d6336c;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    /* 🔹 BUTTONS */
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    /* 💖 YES BUTTON */
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    /* 😅 NO BUTTON (MOVES AWAY) */
+    #no {
+      background-color: #adb5bd;
+      position: absolute;
+    }
+
+    /* 🎞️ GIF STYLING */
+    img {
+      width: 200px;          /* change size if you want */
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🔹 START SCREEN -->
+  <div class="card" id="game">
+    <h1>Azrah 🤍</h1>
+    <p>Tap the heart 5 times</p>
+    <p id="count">0 / 5</p>
+    <button onclick="addHeart()">🤍</button>
+  </div>
+
+  <script>
+    let hearts = 0;
+
+    // 💖 Heart clicking game
+    function addHeart() {
+      hearts++;
+      document.getElementById("count").innerText = hearts + " / 5";
+
+      if (hearts === 5) {
+        document.body.innerHTML = `
+          <div class="card">
+            <h1>My Azrah 🤍</h1>
+            <p>I am lowkey sick of us just being "friends"</p>
+            <p>so... I would like to make this official.</p>
+
+            <h2>May I be your boyfriend?</h2>
+
+            <button id="yes" onclick="yes()">Yes 💖</button>
+            <button id="no" onmouseover="moveNo()">No 😔</button>
+          </div>
+        `;
+      }
+    }
+
+    // 💖 YES CLICKED
+    function yes() {
+      document.body.innerHTML = `
+        <div class="card">
+          <h1></h1>
+
+          <!-- 🎞️ GIF -->
+          <img src="happy.gif" alt="happy gif">
+
+          <h2></h2>
+          <p></p>
+          <p></p>
+        </div>
+      `;
+    }
+
+    // 😅 NO BUTTON RUNS AWAY
+    function moveNo() {
+      const btn = document.getElementById("no");
+      btn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+      btn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    }
+  </script>
+
+</body>
+</html>
